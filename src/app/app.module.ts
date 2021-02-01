@@ -8,11 +8,13 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { AuthGuard } from './shared';
 import { LanguageTranslationModule } from './shared/modules/language-translation/language-translation.module';
+import { NgxChatModule } from '@pazznetwork/ngx-chat';
 
 @NgModule({
     imports: [
         CommonModule,
         BrowserModule,
+        NgxChatModule.forRoot(),
         BrowserAnimationsModule,
         HttpClientModule,
         LanguageTranslationModule,

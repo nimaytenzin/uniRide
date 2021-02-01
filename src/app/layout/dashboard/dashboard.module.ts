@@ -6,9 +6,10 @@ import { ChatComponent, NotificationComponent, TimelineComponent } from './compo
 
 import { DashboardRoutingModule } from './dashboard-routing.module';
 import { DashboardComponent } from './dashboard.component';
+import { NgxChatModule } from '@pazznetwork/ngx-chat';
 
 @NgModule({
-    imports: [CommonModule, NgbCarouselModule, NgbAlertModule, DashboardRoutingModule, StatModule],
+    imports: [CommonModule, NgbCarouselModule, NgbAlertModule, DashboardRoutingModule,NgxChatModule.forRoot(), StatModule],
     declarations: [DashboardComponent, TimelineComponent, NotificationComponent, ChatComponent]
 })
 export class DashboardModule {}

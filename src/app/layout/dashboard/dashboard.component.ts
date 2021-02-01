@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { routerTransition } from '../../router.animations';
 import * as L from 'leaflet';
 import { NgbModalConfig, NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { Inject } from '@angular/core';
+import { ChatService, ChatServiceToken } from '@pazznetwork/ngx-chat';
 
 @Component({
     selector: 'app-dashboard',
@@ -85,7 +87,18 @@ export class DashboardComponent implements OnInit {
     
       ]
 
-    constructor(private modalService: NgbModal) {
+
+    constructor(private modalService: NgbModal, @Inject(ChatServiceToken) chatService: ChatService) {
+        chatService.logIn({
+          domain: 'jabber.hot-chilli.net',
+          service: 'wss://jabber.hot-chilli.net:5281/xmpp-websocket',
+          password: '323395kt',
+          username: 'un_admin',
+        });
+
+      
+
+
         this.sliders.push(
             {
                 imagePath: 'assets/images/slider1.jpg',
@@ -168,8 +181,6 @@ export class DashboardComponent implements OnInit {
             <button class="btn btn-sm btn-primary" type="button" style="width:100%" (click)="open(content)">Contact</button>
             `);
           }
-
-
     }
 
     public closeAlert(alert: any) {
