@@ -1,0 +1,79 @@
+<div [@routerTransition]>
+    <div class="row">
+        <div id="map2">
+
+        </div>
+        
+    </div>
+    <hr />
+    <h4>Incoming requests</h4>
+    <div class="card-body table-responsive">
+        <table class="table" #target>
+            <thead>
+              <tr>
+                <th   *ngFor="let item of tableHeader">{{ item }}</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let request of data">
+                <td  >{{ request.user }}</td>
+                <td  >{{ request.contact }}</td>
+                <td  >{{ request.location }}</td>
+                <td  >{{ request.time }}</td>
+                <td   >
+                    <button class="btn btn-primary" type="button" (click)="open(content)">Assign Driver</button>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+    </div>
+    
+
+<div>
+  <ng-template #content let-c="close" let-d="dismiss">
+    <div class="modal-header">
+      <h4 class="modal-title" id="modal-basic-title">Hi there!</h4>
+      <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="modal-body">
+      <table  class="table">
+        <tr>
+          <th ></th>
+          <th   >Driver</th>
+          <th  >Vehicle</th>
+          <th >Vehicle Number</th>
+          <th>Status</th>
+          <th>Contact</th>
+  
+        </tr>
+        <tr *ngFor = "let driver of drivers">
+          <td  ><input type="checkbox" id="vehicle1" name="vehicle1" value="Bike"></td>
+          <td >{{driver.name}}</td>
+          <td  >{{driver.vehicle}}</td>
+          <td  >{{driver.vehicle_number}}</td>
+          <td  >{{driver.status}}</td>
+          <td  >{{driver.contact_number}}</td>
+  
+  
+        </tr>
+        
+      </table>
+    </div>
+    <div class="modal-footer">
+      <button type="button" class="btn btn-outline-dark" (click)="c('Save click')">Assign and Notify Driver</button>
+    </div>
+  </ng-template>
+  
+   
+</div>
+
+    <div class="row">
+
+
+
+        <app-modal></app-modal>
+        <app-chat></app-chat>
+    </div>
+</div>
